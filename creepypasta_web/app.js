@@ -1,7 +1,7 @@
-const slendermanUrl = "../expediente_slenderman_latam/code.html";
-const jeffUrl = "../expediente_jeff_the_killer_latam/code.html";
-const smileDogUrl = "../expediente_smile_dog_latam/code.html";
-const benDrownedUrl = "../expediente_ben_drowned_latam/code.html";
+﻿const slendermanUrl = "expediente_slenderman_latam/code.html";
+const jeffUrl = "expediente_jeff_the_killer_latam/code.html";
+const smileDogUrl = "expediente_smile_dog_latam/code.html";
+const benDrownedUrl = "expediente_ben_drowned_latam/code.html";
 
 const archives = [
   {
@@ -135,7 +135,7 @@ function renderCards() {
 
 function openArchive(index) {
   const item = archives[index];
-  document.querySelector("#modalLabel").textContent = `${item.category} · Riesgo ${item.risk}`;
+  document.querySelector("#modalLabel").textContent = `${item.category} \u00b7 Riesgo ${item.risk}`;
   document.querySelector("#modalBody").innerHTML = `
     <div class="modal-image" style="background-image:url('${item.image}')"></div>
     <h2 class="serif">${item.name}</h2>
@@ -158,7 +158,7 @@ function openVideo(title, time) {
   document.querySelector("#modalBody").innerHTML = `
     <h2 class="serif">${title}</h2>
     <div class="modal-image" style="display:grid;place-items:center;background:linear-gradient(45deg,#050606,#1b2424)">
-      <span class="mono" style="color:var(--cyan)">Simulacion de video · ${time}</span>
+      <span class="mono" style="color:var(--cyan)">Simulacion de video &middot; ${time}</span>
     </div>
     <p>Este visor ya funciona con JavaScript. Puedes reemplazar la simulacion por un video real cuando tengas el archivo.</p>
   `;
@@ -175,7 +175,7 @@ function renderSavedStories() {
   list.innerHTML = state.saved.slice(-3).reverse().map(item => `
     <div class="saved-item">
       <strong>${item.title}</strong><br>
-      <span class="mono" style="font-size:.66rem">${item.email} · ${item.date}</span>
+      <span class="mono" style="font-size:.66rem">${item.email} &middot; ${item.date}</span>
     </div>
   `).join("");
 }
