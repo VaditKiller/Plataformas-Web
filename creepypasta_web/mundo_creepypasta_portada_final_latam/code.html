@@ -1,0 +1,179 @@
+<html lang="es">
+  <!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mundo Creepypasta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Newsreader:opsz,wght@6..72,500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <button class="icon-btn" id="menuBtn" type="button" aria-label="Abrir menu">☰</button>
+      <a class="brand-title serif" href="#inicio">Mundo Creepypasta</a>
+    </div>
+    <nav class="topnav" aria-label="Navegacion principal">
+      <a href="#categorias">Categorias</a>
+      <a href="#slenderman">Slenderman</a>
+      <a href="#enviar">Enviar relato</a>
+    </nav>
+    <div class="top-actions">
+      <button class="icon-btn" id="searchBtn" type="button" aria-label="Buscar">⌕</button>
+      <button class="ghost-btn" id="loginBtn" type="button">Acceso</button>
+    </div>
+  </header>
+
+  <aside class="drawer" id="drawer" aria-label="Menu lateral">
+    <a href="#categorias">Categorias <span>01</span></a>
+    <a href="#slenderman">Categoria Slenderman <span>02</span></a>
+    <a href="#multimedia">Multimedia <span>03</span></a>
+    <a href="#enviar">Enviar relato <span>04</span></a>
+  </aside>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="label">Archivo digital de horror</p>
+        <h1 class="serif">Historias que no se borran</h1>
+        <p>Explora categorias de creepypastas, busca expedientes, abre fichas rapidas y entra al expediente principal de Slenderman desde la portada.</p>
+        <div class="button-row">
+          <a class="primary-btn" href="#categorias">Explorar categorias</a>
+          <a class="ghost-btn" href="../expediente_slenderman_latam/code.html">Abrir Slenderman</a>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <span class="label">Estado de la red</span>
+        <div class="signal-grid">
+          <div><strong id="archiveCount">0</strong><span>archivos</span></div>
+          <div><strong id="highRiskCount">0</strong><span>riesgo alto</span></div>
+          <div><strong id="savedCount">0</strong><span>relatos</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="warning">
+      <span class="label">Advertencia</span>
+      <p>Contenido de ficcion inspirado en folklore digital. Lee bajo tu propia responsabilidad narrativa.</p>
+    </section>
+
+    <section class="section" id="categorias">
+      <div class="section-head">
+        <div>
+          <p class="label">Base de datos</p>
+          <h2 class="serif">Categorias principales</h2>
+        </div>
+        <button class="ghost-btn" id="randomBtn" type="button">Abrir aleatorio</button>
+      </div>
+
+      <div class="toolbar">
+        <label class="search-box">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="Buscar por nombre, categoria, sintoma u origen">
+        </label>
+        <div class="filters" id="filters"></div>
+      </div>
+
+      <div class="cards-grid" id="cardsGrid"></div>
+      <p class="empty" id="emptyState">No se encontraron archivos con ese criterio.</p>
+    </section>
+
+    <section class="slender-section" id="slenderman">
+      <div class="slender-image" aria-hidden="true"></div>
+      <div class="slender-copy">
+        <p class="label">Categoria destacada</p>
+        <h2 class="serif">Slenderman</h2>
+        <p>La categoria Slenderman queda unida con la parte principal: puedes filtrar la portada, abrir una ficha rapida o entrar al expediente completo con su origen, sintomas, ritual y multimedia.</p>
+        <div class="button-row">
+          <button class="primary-btn" id="openSlenderQuick" type="button">Vista rapida</button>
+          <a class="ghost-btn" href="../expediente_slenderman_latam/code.html">Expediente completo</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="multimedia">
+      <div class="section-head">
+        <div>
+          <p class="label">Evidencia recuperada</p>
+          <h2 class="serif">Multimedia</h2>
+        </div>
+      </div>
+      <div class="media-grid">
+        <button class="media-card" data-video="Metraje encontrado: bosque 2011" data-time="04:22" type="button">
+          <span class="play">▶</span>
+          <strong>Metraje encontrado</strong>
+          <small>Bosque 2011 · 04:22</small>
+        </button>
+        <button class="media-card" data-video="Analisis: las ocho paginas" data-time="12:15" type="button">
+          <span class="play">▶</span>
+          <strong>Las ocho paginas</strong>
+          <small>Analisis · 12:15</small>
+        </button>
+      </div>
+    </section>
+
+    <section class="submit-section" id="enviar">
+      <div>
+        <p class="label">Contribucion</p>
+        <h2 class="serif">Envia tu relato</h2>
+        <p>El formulario valida los datos y guarda tus relatos en este navegador usando JavaScript.</p>
+        <div class="saved-list" id="savedList"></div>
+      </div>
+      <form id="storyForm" novalidate>
+        <label>
+          <span class="label">Titulo</span>
+          <input name="title" required minlength="3" placeholder="La figura al final del pasillo">
+        </label>
+        <label>
+          <span class="label">Correo</span>
+          <input name="email" type="email" required placeholder="tu@correo.com">
+        </label>
+        <label>
+          <span class="label">Relato</span>
+          <textarea name="story" required minlength="20" placeholder="Describe que viste, donde ocurrio y que pruebas tienes..."></textarea>
+        </label>
+        <button class="primary-btn" type="submit">Guardar relato</button>
+        <p class="form-status" id="formStatus" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <button class="ghost-btn" id="likeBtn" type="button">Me gusta el horror</button>
+    <p class="mono">2026 · Mundo Creepypasta · Material clasificado</p>
+  </footer>
+
+  <dialog class="modal" id="detailModal">
+    <div class="modal-head">
+      <p class="label" id="modalLabel">Expediente</p>
+      <button class="icon-btn" id="closeModal" type="button" aria-label="Cerrar">×</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </dialog>
+
+  <dialog class="modal small-modal" id="loginModal">
+    <div class="modal-head">
+      <p class="label">Acceso de investigador</p>
+      <button class="icon-btn" id="closeLogin" type="button" aria-label="Cerrar">×</button>
+    </div>
+    <form class="modal-body" id="loginForm">
+      <h2 class="serif">Iniciar sesion</h2>
+      <label>
+        <span class="label">Alias</span>
+        <input id="aliasInput" required placeholder="Investigador 04">
+      </label>
+      <label>
+        <span class="label">Clave</span>
+        <input required type="password" placeholder="********">
+      </label>
+      <button class="primary-btn" type="submit">Entrar</button>
+      <p class="form-status" id="loginStatus"></p>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
